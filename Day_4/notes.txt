@@ -1,0 +1,25 @@
+When you create a module inside your Python folder, the __pycache__ folder is generated automatically. This folder stores the compiled bytecode of your Python files. Here’s why this happens:
+
+Bytecode Compilation: When you run a Python script or import a module, Python compiles your source code into bytecode, which is a lower-level, platform-independent representation of your code1.
+Faster Imports: Storing this bytecode in the __pycache__ folder allows Python to load modules faster in subsequent runs, as it can skip the compilation step if the bytecode is already available and up-to-date1.
+Automatic Creation: If the __pycache__ folder doesn’t exist, Python will create it the first time you run your script or import a module1.
+You can safely delete the __pycache__ folder if needed; it will be recreated the next time you run your script or import a module 
+
+Qus. Difference btw Bytecode and Binary Code?
+
+Ans.=>   Bytecode
+Intermediate Code: Bytecode is an intermediate code between the source code and machine code. It is not directly executed by the hardware but by a virtual machine (VM).
+Platform-Independent: Bytecode is designed to be platform-independent, meaning it can run on any system that has the appropriate virtual machine. For example, Java bytecode runs on the Java Virtual Machine (JVM).
+Interpretation: Bytecode is interpreted or compiled just-in-time (JIT) by the virtual machine into machine code that the processor can execute.
+Examples: Java bytecode, Python bytecode.
+
+=>Binary Code
+Machine Code: Binary code, also known as machine code, is the lowest-level code that is directly executed by the computer’s processor.
+Platform-Specific: Binary code is specific to the architecture of the processor it was compiled for. It cannot be easily transferred between different types of systems.
+Direct Execution: Binary code is directly executed by the CPU without the need for interpretation by a virtual machine.
+Examples: Executable files like .exe on Windows, compiled binaries on Linux.
+
+=>Key Differences
+Execution: Bytecode requires a virtual machine for execution, while binary code is executed directly by the processor.
+Portability: Bytecode is portable across different platforms, whereas binary code is specific to a particular hardware architecture.
+Performance: Binary code generally offers faster execution since it runs directly on the hardware, while bytecode may have some overhead due to interpretation or JIT compilation
