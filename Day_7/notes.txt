@@ -1,0 +1,14 @@
+1.The error message 'str' object does not support item assignment typically occurs when you try to modify a string directly, as strings in Python are immutable.
+
+2.The ternary operator in Python is a concise way to perform conditional assignments or return values based on a condition. It’s also known as a conditional expression. The syntax is:
+value_if_true if condition else value_if_false
+
+3.When you use the * operator with a list, it creates a new list by repeating the original list a specified number of times.
+When you use the * operator with a list in Python, it creates a new list by repeating the original list a specified number of times. This new list is separate from the original list.
+original_list = ["_"]
+new_list = original_list * 5
+print(new_list)  # Output: ["_", "_", "_", "_", "_"]
+print(original_list)  # Output: ["_"]
+
+
+4.The nested print statement prints None because of how the print function works in Python. When you use print inside another print, the inner print returns None, which is then printed by the outer print.
