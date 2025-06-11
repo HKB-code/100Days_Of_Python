@@ -1,0 +1,228 @@
+ 1. In Python, positional arguments are the most basic type of arguments passed to a function. They are assigned to the function parameters based on their position or order in the function call.
+
+## How Positional Arguments Work
+When you define a function, you specify its parameters. When you call the function, you provide values for these parameters in the same order as they are defined. The function then assigns these values to the corresponding parameters based on their position.
+
+Example: 
+
+def greet(name, age):
+    print(f"Hello, my name is {name} and I am {age} years old.")
+
+# Calling the function with positional arguments
+greet("Alice", 30)
+
+In this example:
+
+The function greet has two parameters: name and age.
+When calling greet("Alice", 30), the value "Alice" is assigned to name and 30 is assigned to age based on their positions.
+
+## Benefits of Positional Arguments
+Simplicity: They are straightforward to use and understand.
+Order Matters: The order of arguments must match the order of parameters in the function definition.
+
+## Comparison with Keyword Arguments
+While positional arguments rely on the order, keyword arguments allow you to specify the parameter names explicitly, making the order irrelevant. For example:
+greet(name="Alice", age=30)
+greet(age=30, name="Alice")  # Order doesn't matter
+Both calls will produce the same output because the arguments are associated with the parameters by name.
+
+## Summary
+Positional Arguments: Values are assigned based on their position in the function call.
+Keyword Arguments: Values are assigned based on the parameter names, making the order irrelevant.
+
+
+2.Modular Arithmetic
+Modular arithmetic is a system of arithmetic for integers, where numbers “wrap around” upon reaching a certain value—the modulus. In your case, the modulus is the length of the alphabet list, which is 26.
+
+## How It Works in Your Code
+
+1.Alphabet List Length:
+The length of aplha_list is 26, representing the 26 letters of the English alphabet.
+2.Calculating Shifted Position:
+When you shift a letter by a certain amount, the new position might exceed 25 (the index of ‘z’). For example, shifting ‘z’ by 1 should wrap around to ‘a’.
+3.Using the % Operator:
+The % operator helps in wrapping around by taking the remainder of the division of the new position by the length of the alphabet list.
+
+## Example
+Let’s say you want to shift the letter ‘z’ by 1 position:
+
+1.Initial Position:
+The index of ‘z’ in aplha_list is 25.
+2.Shift Calculation:
+shift_position = 25 + 1 = 26
+3.Applying the % Operator:
+shift_position %= 26 results in shift_position = 0
+This means that after shifting ‘z’ by 1, the new position is 0, which corresponds to ‘a’.
+
+## Visual Representation
+Here’s a visual representation of how the % operator works:
+
+Alphabet:  [a, b, c, ..., x, y, z]
+Indexes:   [0, 1, 2, ..., 23, 24, 25]
+
+Shift 'z' by 1:
+Initial index of 'z': 25
+New index before wrapping: 25 + 1 = 26
+New index after wrapping: 26 % 26 = 0
+Resulting letter: 'a'
+
+
+## Code Example
+Here’s the relevant part of your code that uses the % operator:
+
+shift_position = ind + shift_amount
+shift_position %= len(aplha_list)
+
+This ensures that shift_position wraps around if it exceeds the length of aplha_list, effectively handling cases where the shift goes past ‘z’ and needs to wrap around to ‘a’.
+
+## Summary
+1.Modular Arithmetic: Ensures numbers wrap around upon reaching a certain value.
+2.% Operator: Used to calculate the remainder, ensuring the index stays within the bounds of the alphabet list.
+3.Wrap-Around: Essential for handling shifts that exceed the length of the alphabet, allowing ‘z’ to wrap around to ‘a’.
+
+3.Python scopping?
+
+=>In Python, scoping rules determine the visibility and lifetime of variables within different parts of your code. These rules are essential for understanding how variables are accessed and modified. Python follows the LEGB rule, which stands for Local, Enclosing, Global, and Built-in scopes. Here’s a breakdown:
+
+`1.Local Scope:
+Variables defined within a function are in the local scope.
+They can only be accessed within that function.
+
+def my_function():
+    x = 10  # Local variable
+    print(x)
+
+my_function()
+# Output: 10
+
+2.Enclosing Scope:
+This is relevant for nested functions.
+Variables in the enclosing (outer) function are accessible to the nested (inner) function.
+
+def outer_function():
+    x = 20  # Enclosing variable
+    def inner_function():
+        print(x)
+    inner_function()
+
+outer_function()
+# Output: 20
+
+3.Global Scope:
+Variables defined at the top level of a script or module are in the global scope.
+They can be accessed from any part of the code.
+
+x = 30  # Global variable
+
+def my_function():
+    print(x)
+
+my_function()
+# Output: 30
+
+4.Built-in Scope:
+This includes names that are pre-defined in Python, such as print(), len(), etc.
+
+print(len("Hello"))  # Built-in functions
+# Output: 5
+
+
+# Modifying Scope Behavior
+1.Global Keyword:
+Used to modify a global variable inside a function.
+
+x = 40
+
+def my_function():
+    global x
+    x = 50
+
+my_function()
+print(x)
+# Output: 50
+
+2.Nonlocal Keyword:
+Used to modify a variable in the enclosing scope within a nested function.
+
+def outer_function():
+    x = 60
+    def inner_function():
+        nonlocal x
+        x = 70
+    inner_function()
+    print(x)
+
+outer_function()
+# Output: 70
+
+
+#In Python, modifying a global variable from within a function without using the global keyword is not possible due to the language’s scoping rules. The global keyword is necessary to tell Python that you want to use the global variable rather than creating a new local one.
+#Note: However, there are a few alternative approaches you can consider:
+1.Using a Mutable Object:
+    You can use a mutable object like a list or dictionary to hold the variable. Since the object itself is not reassigned, you can modify its contents without needing the global keyword.
+
+should_continue = [True]  # Using a list to hold the variable
+
+def ceaaser(original_text, shift_amount, encode_or_decode):
+    aplha_list = [chr(i) for i in range(ord("a"), ord("z") + 1)]
+    shift_txt = ""
+    if encode_or_decode == 'decode':
+        shift_amount *= -1
+    for letter in original_text:
+        if letter in aplha_list:
+            ind = aplha_list.index(letter)
+            shift_position = ind + shift_amount
+            shift_position %= len(aplha_list)
+            shift_txt += aplha_list[shift_position]
+        else:
+            shift_txt += letter
+    print(f"Here is the {encode_or_decode}d message: {shift_txt}")
+    restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'\n").lower()
+    if restart == 'no':
+        should_continue[0] = False
+        print("Bye..")
+
+while should_continue[0]:
+    print("Logo")
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message...\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    ceaaser(original_text=text, shift_amount=shift, encode_or_decode=direction)
+
+
+2.Using a Class:
+You can encapsulate the logic within a class and use instance variables to maintain state.
+
+class CaesarCipher:
+    def __init__(self):
+        self.should_continue = True
+
+    def ceaaser(self, original_text, shift_amount, encode_or_decode):
+        aplha_list = [chr(i) for i in range(ord("a"), ord("z") + 1)]
+        shift_txt = ""
+        if encode_or_decode == 'decode':
+            shift_amount *= -1
+        for letter in original_text:
+            if letter in aplha_list:
+                ind = aplha_list.index(letter)
+                shift_position = ind + shift_amount
+                shift_position %= len(aplha_list)
+                shift_txt += aplha_list[shift_position]
+            else:
+                shift_txt += letter
+        print(f"Here is the {encode_or_decode}d message: {shift_txt}")
+        restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'\n").lower()
+        if restart == 'no':
+            self.should_continue = False
+            print("Bye..")
+
+    def run(self):
+        while self.should_continue:
+            print("Logo")
+            direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+            text = input("Type your message...\n").lower()
+            shift = int(input("Type the shift number:\n"))
+            self.ceaaser(original_text=text, shift_amount=shift, encode_or_decode=direction)
+
+cipher = CaesarCipher()
+cipher.run()
