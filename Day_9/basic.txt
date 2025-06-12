@@ -1,0 +1,153 @@
+1.how to add key and values in dictionary in python from inputs?
+ a.Using a Loop with input() Function:
+This method involves prompting the user for the number of entries they want to add and then using a loop to collect key-value pairs.
+# Initialize an empty dictionary
+user_dict = {}
+
+# Get the number of entries from the user
+num_entries = int(input("Enter the number of entries you want to add: "))
+
+# Loop to get key-value pairs from the user
+for i in range(num_entries):
+    key = input("Enter key: ")
+    value = input("Enter value: ")
+    user_dict[key] = value
+
+print("Dictionary after adding user input:", user_dict)
+
+ b.Using Dictionary Comprehension:
+This method uses dictionary comprehension to collect key-value pairs in a concise manner.
+# Get the number of entries from the user
+num_entries = int(input("Enter the number of entries you want to add: "))
+
+# Use dictionary comprehension to create the dictionary
+user_dict = {input(f"Enter key {i+1}: "): input(f"Enter value {i+1}: ") for i in range(num_entries)}
+
+print("Dictionary after adding user input:", user_dict)
+
+ c.Using update() Method
+This method uses the update() method to add key-value pairs to the dictionary:
+
+# Initialize an empty dictionary
+user_dict = {}
+
+# Get the number of entries from the user
+num_entries = int(input("Enter the number of entries you want to add: "))
+
+# Loop to get key-value pairs from the user and update the dictionary
+for i in range(num_entries):
+    key = input("Enter key: ")
+    value = input("Enter value: ")
+    user_dict.update({key: value})
+
+print("Dictionary after adding user input:", user_dict)
+
+
+2.how can i add a dicitonary into another dicitonary?
+ a.Using the update() Method
+ 
+  b.Using the ** Unpacking Operator
+This method creates a new dictionary by unpacking the key-value pairs from both dictionaries.
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+
+merged_dict = {**dict1, **dict2}
+print(merged_dict)
+# Output: {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+ c.Using a Loop
+You can manually add key-value pairs from one dictionary to another using a loop.
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+
+for key, value in dict2.items():
+    dict1[key] = value
+
+print(dict1)
+# Output: {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+# Without Overwriting Existing Keys
+If you want to add key-value pairs without overwriting existing keys, you can use the setdefault() method or a custom approach.
+
+Using setdefault()
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+for key, value in dict2.items():
+    dict1.setdefault(key, value)
+
+print(dict1)
+# Output: {'a': 1, 'b': 2, 'c': 4}
+
+#Custom Approach
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+for key, value in dict2.items():
+    if key in dict1:
+        if isinstance(dict1[key], list):
+            dict1[key].append(value)
+        else:
+            dict1[key] = [dict1[key], value]
+    else:
+        dict1[key] = value
+
+print(dict1)
+# Output: {'a': 1, 'b': [2, 3], 'c': 4}
+
+
+#Note:
+The items() method in Python is used with dictionaries to return a view object that displays a list of a dictionary’s key-value tuple pairs. This can be particularly useful when you want to iterate over both keys and values in a dictionary.
+
+Here’s an example to illustrate how items() works:
+# Example dictionary
+my_dict = {'name': 'Alice', 'age': 25, 'city': 'New York'}
+
+# Using items() to get key-value pairs
+for key, value in my_dict.items():
+    print(f"Key: {key}, Value: {value}")
+output:    
+Key: name, Value: Alice
+Key: age, Value: 25
+Key: city, Value: New York
+
+
+
+#Without loop:
+
+final_bid = {}
+should_continue = True
+
+def add_Bid():
+    name = input("What is your name?: ")
+    bid = int(input("What is your bid?: "))
+    bid_data = {
+        name: bid
+    }
+    final_bid.update(bid_data)
+
+while should_continue:
+    add_Bid()
+    extra = input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
+    if extra == 'no':
+        # Find the maximum bid
+        max_bidder = max(final_bid, key=final_bid.get)
+        max_bid = final_bid[max_bidder]
+        print(f"The highest bid is {max_bid} by {max_bidder}.")
+        should_continue = False
+
+
+Explanation:
+Adding Bids: The add_Bid() function collects the name and bid from the user and updates the final_bid dictionary.
+Loop for Additional Bidders: The while loop continues to prompt for additional bidders until the user types ‘no’.
+Finding the Maximum Bid: When no more bidders are present, the max() function is used to find the key (bidder) with the highest value (bid). The key=final_bid.get argument tells max() to compare the dictionary values.
+Printing the Result: The highest bid and the corresponding bidder are printed.
+
+
+
+
+#Create pentagon shape with asterisks (*)
+print('\n'.join([' ' * (4 - i) + '*' * (2 * i + 1) for i in range(5)]))
+
+# Note: The nested print statement prints None because of how the print function works in Python. When you use print inside another print, the inner print returns None, which is then printed by the outer print.
