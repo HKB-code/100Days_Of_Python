@@ -21,7 +21,7 @@ while not game_over:
         letter = word[i]
         if letter ==guess:
             display[i] = letter
-        if guess not in word:
+    if guess not in word:
             lifes-=1
             if lifes>0:
                 print("Oops you lost 1 life" if lifes==5 else "you lost another life")
