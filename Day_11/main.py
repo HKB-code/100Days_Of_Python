@@ -22,14 +22,14 @@ def compare_score(user_score,computer_score):
       return "Win with the BlackJack"
    elif computer_score ==0:
       return "Lose, Computer hit BlackJack"
-   elif user_score==computer_score:
-      return "Draw"
-   elif user_score>computer_score:
-      return "You Win"
    elif user_score>21:
       return "You went over, You Lose"
    elif computer_score>21:
       return "Opponent went over, You Win"
+   elif user_score==computer_score:
+      return "Draw"
+   elif user_score>computer_score:
+      return "You Win"
    else: 
       return "You Lose"
    
