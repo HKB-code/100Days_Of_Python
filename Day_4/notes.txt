@@ -23,3 +23,14 @@ Examples: Executable files like .exe on Windows, compiled binaries on Linux.
 Execution: Bytecode requires a virtual machine for execution, while binary code is executed directly by the processor.
 Portability: Bytecode is portable across different platforms, whereas binary code is specific to a particular hardware architecture.
 Performance: Binary code generally offers faster execution since it runs directly on the hardware, while bytecode may have some overhead due to interpretation or JIT compilation
+
+
+
+->append vs extend
+🔹 append(): Adds a single item to the end of the list
+- It treats the argument as one object, regardless of its type.
+- The entire object is added as a single element.
+
+🔸 extend(): Adds each element of an iterable to the list
+- It iterates over the argument and adds each item individually.
+- Only works with iterables (like lists, tuples, strings).
