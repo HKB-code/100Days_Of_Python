@@ -1,7 +1,7 @@
 import random
 from logo import logo
 
-print(logo)
+
 def deal_cards():
     """Return a random card from deck"""
     cards = [11,2,3,4,5,6,7,8,9,10,10,10,10]
@@ -79,3 +79,4 @@ play =  input("Do you want to play another game. Type 'Y' for yes or 'N' for no 
   
 while play == 'y':
   play_game()
+  play =  input("Do you want to play another game. Type 'Y' for yes or 'N' for no ").lower()
