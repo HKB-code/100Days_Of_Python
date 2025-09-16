@@ -27,3 +27,7 @@ empty_dict["age"] = 30
 empty_dict["city"] = "New York"
 
 print(empty_dict)
+
+
+list comprehension:
+[expression_if_true if condition else expression_if_false for item in iterable]
