@@ -12,25 +12,27 @@ def check_answer(guess,answer,turns):
         return -1
     
 
-easy_level = 5
-difficult_level = 10
+easy_level = 10
+difficult_level = 5
 from random import randint
 
 def level():
-    try:
-        levels = input("Choose a difficulty. Type 'easy' or 'hard':").strip().lower()
-        if levels == "":
-            return 'Please enter difficulties level'
-        elif levels not in ["easy", "hard"]:
-            return "Invalid difficulty. Please type 'easy' or 'hard'."
-        elif levels == "easy":
+     while True:
+      try:
+        levels = input("Choose level's easy or hard").lower()
+    
+        if levels =="":
+            print("please enter level")
+        elif levels not in ["easy","hard"]:
+            print("please enter a valid level")
+        elif levels =="easy":
             return easy_level
         else:
-            return difficult_level 
-
-
-    except  Exception as e:
-        return (f"An unexpected erroe occurred: {e}")
+            return difficult_level
+        
+      except Exception as e:
+        print(f"an unexpected error occured {e}")
+    
 
 
 def game():
